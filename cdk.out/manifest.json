@@ -1,0 +1,191 @@
+{
+  "version": "36.0.0",
+  "artifacts": {
+    "RPlace2023AnalysisCdkStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "RPlace2023AnalysisCdkStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "RPlace2023AnalysisCdkStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "RPlace2023AnalysisCdkStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/202fb59534486b9f8b83201f21826d66d7c49ef08e6374d71df1b20b64ec4b53.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "RPlace2023AnalysisCdkStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "RPlace2023AnalysisCdkStack.assets"
+      ],
+      "metadata": {
+        "/RPlace2023AnalysisCdkStack/glue_role_id2323/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "glueroleid23238EBB2881"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/glue_role_id2323/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "glueroleid2323DefaultPolicy615B6686"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/reddit-data-bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "redditdatabucket3658BFEB"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/reddit-data-bucket/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "redditdatabucketPolicy1F1DA0C1"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/reddit-data-bucket/AutoDeleteObjectsCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "redditdatabucketAutoDeleteObjectsCustomResource1302C79C"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/deployment/AwsCliLayer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deploymentAwsCliLayer437C1CEF"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/deployment/CustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "deploymentCustomResourceEDB139B7"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/r_place_etl_workflow": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rplaceetlworkflow"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/download_r_place_csvs_job": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "downloadrplacecsvsjob"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/process_csvs_to_parquet_job": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "processcsvstoparquetjob"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/start_trigger": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "starttrigger"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/download_finished_trigger": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "downloadfinishedtrigger"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/r_place_db": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rplacedb"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/r_place_crawler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rplacecrawler"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/parquet_finished_trigger": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "parquetfinishedtrigger"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/RPlace2023AnalysisCdkStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "RPlace2023AnalysisCdkStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

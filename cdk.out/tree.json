@@ -1,0 +1,969 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "RPlace2023AnalysisCdkStack": {
+        "id": "RPlace2023AnalysisCdkStack",
+        "path": "RPlace2023AnalysisCdkStack",
+        "children": {
+          "glue_role_id2323": {
+            "id": "glue_role_id2323",
+            "path": "RPlace2023AnalysisCdkStack/glue_role_id2323",
+            "children": {
+              "Importglue_role_id2323": {
+                "id": "Importglue_role_id2323",
+                "path": "RPlace2023AnalysisCdkStack/glue_role_id2323/Importglue_role_id2323",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.128.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "RPlace2023AnalysisCdkStack/glue_role_id2323/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "glue.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/service-role/AWSGlueServiceRole"
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.128.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "RPlace2023AnalysisCdkStack/glue_role_id2323/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RPlace2023AnalysisCdkStack/glue_role_id2323/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:Abort*",
+                                "s3:DeleteObject*",
+                                "s3:GetBucket*",
+                                "s3:GetObject*",
+                                "s3:List*",
+                                "s3:PutObject",
+                                "s3:PutObjectLegalHold",
+                                "s3:PutObjectRetention",
+                                "s3:PutObjectTagging",
+                                "s3:PutObjectVersionTagging"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "redditdatabucket3658BFEB",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "redditdatabucket3658BFEB",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "glueroleid2323DefaultPolicy615B6686",
+                        "roles": [
+                          {
+                            "Ref": "glueroleid23238EBB2881"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.128.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.128.0"
+            }
+          },
+          "reddit-data-bucket": {
+            "id": "reddit-data-bucket",
+            "path": "RPlace2023AnalysisCdkStack/reddit-data-bucket",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "RPlace2023AnalysisCdkStack/reddit-data-bucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "publicAccessBlockConfiguration": {
+                      "blockPublicAcls": true,
+                      "blockPublicPolicy": true,
+                      "ignorePublicAcls": true,
+                      "restrictPublicBuckets": true
+                    },
+                    "tags": [
+                      {
+                        "key": "aws-cdk:auto-delete-objects",
+                        "value": "true"
+                      },
+                      {
+                        "key": "aws-cdk:cr-owned:assets/:d5745b58",
+                        "value": "true"
+                      }
+                    ],
+                    "versioningConfiguration": {
+                      "status": "Enabled"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.128.0"
+                }
+              },
+              "Policy": {
+                "id": "Policy",
+                "path": "RPlace2023AnalysisCdkStack/reddit-data-bucket/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RPlace2023AnalysisCdkStack/reddit-data-bucket/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
+                      "aws:cdk:cloudformation:props": {
+                        "bucket": {
+                          "Ref": "redditdatabucket3658BFEB"
+                        },
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:DeleteObject*",
+                                "s3:GetBucket*",
+                                "s3:List*",
+                                "s3:PutBucketPolicy"
+                              ],
+                              "Effect": "Allow",
+                              "Principal": {
+                                "AWS": {
+                                  "Fn::GetAtt": [
+                                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                                    "Arn"
+                                  ]
+                                }
+                              },
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "redditdatabucket3658BFEB",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "redditdatabucket3658BFEB",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.CfnBucketPolicy",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.BucketPolicy",
+                  "version": "2.128.0"
+                }
+              },
+              "AutoDeleteObjectsCustomResource": {
+                "id": "AutoDeleteObjectsCustomResource",
+                "path": "RPlace2023AnalysisCdkStack/reddit-data-bucket/AutoDeleteObjectsCustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "RPlace2023AnalysisCdkStack/reddit-data-bucket/AutoDeleteObjectsCustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.128.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.128.0"
+            }
+          },
+          "Custom::S3AutoDeleteObjectsCustomResourceProvider": {
+            "id": "Custom::S3AutoDeleteObjectsCustomResourceProvider",
+            "path": "RPlace2023AnalysisCdkStack/Custom::S3AutoDeleteObjectsCustomResourceProvider",
+            "children": {
+              "Staging": {
+                "id": "Staging",
+                "path": "RPlace2023AnalysisCdkStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Staging",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.AssetStaging",
+                  "version": "2.128.0"
+                }
+              },
+              "Role": {
+                "id": "Role",
+                "path": "RPlace2023AnalysisCdkStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.128.0"
+                }
+              },
+              "Handler": {
+                "id": "Handler",
+                "path": "RPlace2023AnalysisCdkStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.128.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CustomResourceProviderBase",
+              "version": "2.128.0"
+            }
+          },
+          "deployment": {
+            "id": "deployment",
+            "path": "RPlace2023AnalysisCdkStack/deployment",
+            "children": {
+              "AwsCliLayer": {
+                "id": "AwsCliLayer",
+                "path": "RPlace2023AnalysisCdkStack/deployment/AwsCliLayer",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "RPlace2023AnalysisCdkStack/deployment/AwsCliLayer/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "RPlace2023AnalysisCdkStack/deployment/AwsCliLayer/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.128.0"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "RPlace2023AnalysisCdkStack/deployment/AwsCliLayer/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.128.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.128.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RPlace2023AnalysisCdkStack/deployment/AwsCliLayer/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                      "aws:cdk:cloudformation:props": {
+                        "content": {
+                          "s3Bucket": {
+                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                          },
+                          "s3Key": "3322b7049fb0ed2b7cbb644a2ada8d1116ff80c32dca89e6ada846b5de26f961.zip"
+                        },
+                        "description": "/opt/awscli/aws"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.lambda_layer_awscli.AwsCliLayer",
+                  "version": "2.128.0"
+                }
+              },
+              "CustomResourceHandler": {
+                "id": "CustomResourceHandler",
+                "path": "RPlace2023AnalysisCdkStack/deployment/CustomResourceHandler",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.SingletonFunction",
+                  "version": "2.128.0"
+                }
+              },
+              "Asset1": {
+                "id": "Asset1",
+                "path": "RPlace2023AnalysisCdkStack/deployment/Asset1",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "RPlace2023AnalysisCdkStack/deployment/Asset1/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.128.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "RPlace2023AnalysisCdkStack/deployment/Asset1/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.128.0"
+                }
+              },
+              "CustomResource": {
+                "id": "CustomResource",
+                "path": "RPlace2023AnalysisCdkStack/deployment/CustomResource",
+                "children": {
+                  "Default": {
+                    "id": "Default",
+                    "path": "RPlace2023AnalysisCdkStack/deployment/CustomResource/Default",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.CfnResource",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CustomResource",
+                  "version": "2.128.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3_deployment.BucketDeployment",
+              "version": "2.128.0"
+            }
+          },
+          "Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": {
+            "id": "Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C",
+            "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.128.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.128.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "s3:GetBucket*",
+                                    "s3:GetObject*",
+                                    "s3:List*"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":s3:::",
+                                          {
+                                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          "arn:",
+                                          {
+                                            "Ref": "AWS::Partition"
+                                          },
+                                          ":s3:::",
+                                          {
+                                            "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                                          }
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Action": [
+                                    "s3:Abort*",
+                                    "s3:DeleteObject*",
+                                    "s3:GetBucket*",
+                                    "s3:GetObject*",
+                                    "s3:List*",
+                                    "s3:PutObject",
+                                    "s3:PutObjectLegalHold",
+                                    "s3:PutObjectRetention",
+                                    "s3:PutObjectTagging",
+                                    "s3:PutObjectVersionTagging"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "redditdatabucket3658BFEB",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "redditdatabucket3658BFEB",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+                            "roles": [
+                              {
+                                "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.128.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.128.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.128.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.128.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.128.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "RPlace2023AnalysisCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "e976a796f036a5efbf44b99e44cfb5a961df08d8dbf7cd37e60bf216fb982a00.zip"
+                    },
+                    "environment": {
+                      "variables": {
+                        "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+                      }
+                    },
+                    "handler": "index.handler",
+                    "layers": [
+                      {
+                        "Ref": "deploymentAwsCliLayer437C1CEF"
+                      }
+                    ],
+                    "role": {
+                      "Fn::GetAtt": [
+                        "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.9",
+                    "timeout": 900
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.128.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.128.0"
+            }
+          },
+          "r_place_etl_workflow": {
+            "id": "r_place_etl_workflow",
+            "path": "RPlace2023AnalysisCdkStack/r_place_etl_workflow",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Workflow",
+              "aws:cdk:cloudformation:props": {
+                "description": "Workflow to process the ETL for r/place.",
+                "name": "r_place_etl_workflow"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnWorkflow",
+              "version": "2.128.0"
+            }
+          },
+          "download_r_place_csvs_job": {
+            "id": "download_r_place_csvs_job",
+            "path": "RPlace2023AnalysisCdkStack/download_r_place_csvs_job",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Job",
+              "aws:cdk:cloudformation:props": {
+                "command": {
+                  "name": "pythonshell",
+                  "pythonVersion": "3.9",
+                  "scriptLocation": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "s3://",
+                        {
+                          "Ref": "redditdatabucket3658BFEB"
+                        },
+                        "/assets/download_r_place_csvs.py"
+                      ]
+                    ]
+                  }
+                },
+                "defaultArguments": {
+                  "--bucket": {
+                    "Ref": "redditdatabucket3658BFEB"
+                  }
+                },
+                "glueVersion": "3.0",
+                "maxCapacity": 1,
+                "name": "download_r_place_csvs_job",
+                "role": {
+                  "Fn::GetAtt": [
+                    "glueroleid23238EBB2881",
+                    "Arn"
+                  ]
+                },
+                "timeout": 3
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnJob",
+              "version": "2.128.0"
+            }
+          },
+          "process_csvs_to_parquet_job": {
+            "id": "process_csvs_to_parquet_job",
+            "path": "RPlace2023AnalysisCdkStack/process_csvs_to_parquet_job",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Job",
+              "aws:cdk:cloudformation:props": {
+                "command": {
+                  "name": "glueetl",
+                  "pythonVersion": "3",
+                  "scriptLocation": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "s3://",
+                        {
+                          "Ref": "redditdatabucket3658BFEB"
+                        },
+                        "/assets/process_csvs_to_parquet.py"
+                      ]
+                    ]
+                  }
+                },
+                "defaultArguments": {
+                  "--bucket": {
+                    "Ref": "redditdatabucket3658BFEB"
+                  }
+                },
+                "glueVersion": "4.0",
+                "maxCapacity": 10,
+                "name": "process_csvs_to_parquet_job",
+                "role": {
+                  "Fn::GetAtt": [
+                    "glueroleid23238EBB2881",
+                    "Arn"
+                  ]
+                },
+                "timeout": 60
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnJob",
+              "version": "2.128.0"
+            }
+          },
+          "start_trigger": {
+            "id": "start_trigger",
+            "path": "RPlace2023AnalysisCdkStack/start_trigger",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Trigger",
+              "aws:cdk:cloudformation:props": {
+                "actions": [
+                  {
+                    "jobName": "download_r_place_csvs_job"
+                  }
+                ],
+                "name": "start_trigger",
+                "type": "ON_DEMAND",
+                "workflowName": "r_place_etl_workflow"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnTrigger",
+              "version": "2.128.0"
+            }
+          },
+          "download_finished_trigger": {
+            "id": "download_finished_trigger",
+            "path": "RPlace2023AnalysisCdkStack/download_finished_trigger",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Trigger",
+              "aws:cdk:cloudformation:props": {
+                "actions": [
+                  {
+                    "jobName": "process_csvs_to_parquet_job"
+                  }
+                ],
+                "name": "download_finished_trigger",
+                "predicate": {
+                  "conditions": [
+                    {
+                      "jobName": "download_r_place_csvs_job",
+                      "logicalOperator": "EQUALS",
+                      "state": "SUCCEEDED"
+                    }
+                  ]
+                },
+                "type": "CONDITIONAL",
+                "workflowName": "r_place_etl_workflow"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnTrigger",
+              "version": "2.128.0"
+            }
+          },
+          "r_place_db": {
+            "id": "r_place_db",
+            "path": "RPlace2023AnalysisCdkStack/r_place_db",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Database",
+              "aws:cdk:cloudformation:props": {
+                "catalogId": {
+                  "Ref": "AWS::AccountId"
+                },
+                "databaseInput": {
+                  "description": "Database for rplace data.",
+                  "name": "r_place_db"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnDatabase",
+              "version": "2.128.0"
+            }
+          },
+          "r_place_crawler": {
+            "id": "r_place_crawler",
+            "path": "RPlace2023AnalysisCdkStack/r_place_crawler",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Crawler",
+              "aws:cdk:cloudformation:props": {
+                "databaseName": "r_place_db",
+                "name": "r_place_crawler",
+                "role": {
+                  "Fn::GetAtt": [
+                    "glueroleid23238EBB2881",
+                    "Arn"
+                  ]
+                },
+                "targets": {
+                  "s3Targets": [
+                    {
+                      "path": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "s3://",
+                            {
+                              "Ref": "redditdatabucket3658BFEB"
+                            },
+                            "/parquet/rplace.parquet"
+                          ]
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnCrawler",
+              "version": "2.128.0"
+            }
+          },
+          "parquet_finished_trigger": {
+            "id": "parquet_finished_trigger",
+            "path": "RPlace2023AnalysisCdkStack/parquet_finished_trigger",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Glue::Trigger",
+              "aws:cdk:cloudformation:props": {
+                "actions": [
+                  {
+                    "crawlerName": "r_place_crawler"
+                  }
+                ],
+                "name": "parquet_finished_trigger",
+                "predicate": {
+                  "conditions": [
+                    {
+                      "jobName": "process_csvs_to_parquet_job",
+                      "logicalOperator": "EQUALS",
+                      "state": "SUCCEEDED"
+                    }
+                  ]
+                },
+                "type": "CONDITIONAL",
+                "workflowName": "r_place_etl_workflow"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_glue.CfnTrigger",
+              "version": "2.128.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "RPlace2023AnalysisCdkStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "RPlace2023AnalysisCdkStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.128.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "RPlace2023AnalysisCdkStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.128.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "RPlace2023AnalysisCdkStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.128.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "RPlace2023AnalysisCdkStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.128.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.128.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.128.0"
+    }
+  }
+}
