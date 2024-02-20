@@ -60,7 +60,8 @@ class RPlace2023AnalysisCdkStack(cdk.Stack):
                     script_location=f's3://{glueS3Bucket.bucket_name}/assets/process_csvs_to_parquet.py'),
                 role=glue_role.role_arn,
                 glue_version='4.0',
-                max_capacity=10,
+                worker_type='G.2X',
+                number_of_workers=55,
                 timeout=60, 
                 default_arguments={
                     '--bucket': glueS3Bucket.bucket_name
@@ -80,6 +81,7 @@ class RPlace2023AnalysisCdkStack(cdk.Stack):
                 name='download_finished_trigger',
                 actions=[glue.CfnTrigger.ActionProperty(job_name=process_csvs_to_parquet_job.name)],
                 type='CONDITIONAL',
+                start_on_creation=True,
                 workflow_name=glue_workflow.name,
                 predicate=glue.CfnTrigger.PredicateProperty(
                     conditions=[glue.CfnTrigger.ConditionProperty(
@@ -96,7 +98,7 @@ class RPlace2023AnalysisCdkStack(cdk.Stack):
         glue_crawler = glue.CfnCrawler(self, 'r_place_crawler',
             role=glue_role.role_arn,
             database_name='r_place_db',
-            targets={'s3Targets': [{'path': f's3://{glueS3Bucket.bucket_name}/parquet/rplace.parquet'}]},
+            targets={'s3Targets': [{'path': f's3://{glueS3Bucket.bucket_name}/processed/'}]},
             name='r_place_crawler')
 
         parquet_finished_trigger = \
@@ -104,6 +106,7 @@ class RPlace2023AnalysisCdkStack(cdk.Stack):
                 name='parquet_finished_trigger',
                 actions=[glue.CfnTrigger.ActionProperty(crawler_name=glue_crawler.name)],
                 type='CONDITIONAL',
+                start_on_creation=True,
                 workflow_name=glue_workflow.name,
                 predicate=glue.CfnTrigger.PredicateProperty(
                     conditions=[glue.CfnTrigger.ConditionProperty(

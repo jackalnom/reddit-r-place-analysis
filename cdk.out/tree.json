@@ -748,15 +748,16 @@
                   }
                 },
                 "glueVersion": "4.0",
-                "maxCapacity": 10,
                 "name": "process_csvs_to_parquet_job",
+                "numberOfWorkers": 55,
                 "role": {
                   "Fn::GetAtt": [
                     "glueroleid23238EBB2881",
                     "Arn"
                   ]
                 },
-                "timeout": 60
+                "timeout": 60,
+                "workerType": "G.2X"
               }
             },
             "constructInfo": {
@@ -806,6 +807,7 @@
                     }
                   ]
                 },
+                "startOnCreation": true,
                 "type": "CONDITIONAL",
                 "workflowName": "r_place_etl_workflow"
               }
@@ -860,7 +862,7 @@
                             {
                               "Ref": "redditdatabucket3658BFEB"
                             },
-                            "/parquet/rplace.parquet"
+                            "/processed/"
                           ]
                         ]
                       }
@@ -895,6 +897,7 @@
                     }
                   ]
                 },
+                "startOnCreation": true,
                 "type": "CONDITIONAL",
                 "workflowName": "r_place_etl_workflow"
               }

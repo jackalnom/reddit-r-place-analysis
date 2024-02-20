@@ -295,7 +295,7 @@
      }
     ],
     "SourceObjectKeys": [
-     "1d3db2c86211788f1aec8bc6d7051594f31340b0f8658834391eb079565eb9c1.zip"
+     "7c8426cbb04e42b8f82962b41aa2e1c53f9e62a9cf93ed3e1b877815d7bee5b6.zip"
     ],
     "DestinationBucketName": {
      "Ref": "redditdatabucket3658BFEB"
@@ -554,15 +554,16 @@
      }
     },
     "GlueVersion": "4.0",
-    "MaxCapacity": 10,
     "Name": "process_csvs_to_parquet_job",
+    "NumberOfWorkers": 55,
     "Role": {
      "Fn::GetAtt": [
       "glueroleid23238EBB2881",
       "Arn"
      ]
     },
-    "Timeout": 60
+    "Timeout": 60,
+    "WorkerType": "G.2X"
    },
    "Metadata": {
     "aws:cdk:path": "RPlace2023AnalysisCdkStack/process_csvs_to_parquet_job"
@@ -602,6 +603,7 @@
       }
      ]
     },
+    "StartOnCreation": true,
     "Type": "CONDITIONAL",
     "WorkflowName": "r_place_etl_workflow"
    },
@@ -646,7 +648,7 @@
           {
            "Ref": "redditdatabucket3658BFEB"
           },
-          "/parquet/rplace.parquet"
+          "/processed/"
          ]
         ]
        }
@@ -676,6 +678,7 @@
       }
      ]
     },
+    "StartOnCreation": true,
     "Type": "CONDITIONAL",
     "WorkflowName": "r_place_etl_workflow"
    },

@@ -1,6 +1,5 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType, IntegerType
-from pyspark.sql.functions import split, col 
 import sys
 from awsglue.utils import getResolvedOptions
 
@@ -20,13 +19,13 @@ schema = StructType([
 ])
 bucket = job_args['bucket']
 # Specify the source directory
-source_dir = f"s3://{bucket}/csvs/*.csv.gz"
+source_dir = f"s3://{bucket}/csvs/*.csv.gzip"
 
 # Read the gzip compressed CSV files into a DataFrame with an explicit schema
-df = spark.read.csv(source_dir, schema=schema, header=True)
+df = spark.read.option("compression", "gzip").csv(source_dir, schema=schema, header=True)
 
 # Filter rows where 'coordinate' is in the format 'x,y'
-df = df.filter("coordinate RLIKE '^-?[0-9]+,-?[0-9]+$'")
+df = df.filter("coordinate RLIKE '^[0-9]+,[0-9]+$'")
 
 # Split the 'coordinate' field into two separate columns 'x' and 'y', and convert to integers
 split_col = split(df['coordinate'], ',')

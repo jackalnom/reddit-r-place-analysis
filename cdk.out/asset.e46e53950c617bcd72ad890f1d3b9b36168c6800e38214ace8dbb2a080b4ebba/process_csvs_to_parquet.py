@@ -26,7 +26,7 @@ source_dir = f"s3://{bucket}/csvs/*.csv.gz"
 df = spark.read.csv(source_dir, schema=schema, header=True)
 
 # Filter rows where 'coordinate' is in the format 'x,y'
-df = df.filter("coordinate RLIKE '^-?[0-9]+,-?[0-9]+$'")
+df = df.filter("coordinate RLIKE '^[0-9]+,[0-9]+$'")
 
 # Split the 'coordinate' field into two separate columns 'x' and 'y', and convert to integers
 split_col = split(df['coordinate'], ',')

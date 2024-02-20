@@ -17,7 +17,7 @@ def upload_file(file_number):
     
     # Format the URL and the s3 file key with the current file number
     url = base_url.format(file_number)
-    s3_file_key = f'csvs/2023_place_canvas_history-{file_number:012d}.csv.gz'
+    s3_file_key = f'csvs/2023_place_canvas_history-{file_number:012d}.csv.gzip'
     
     with closing(requests.get(url, stream=True)) as response:
         # Ensure the request was successful
