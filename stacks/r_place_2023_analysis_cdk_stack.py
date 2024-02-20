@@ -60,8 +60,8 @@ class RPlace2023AnalysisCdkStack(cdk.Stack):
                     script_location=f's3://{glueS3Bucket.bucket_name}/assets/process_csvs_to_parquet.py'),
                 role=glue_role.role_arn,
                 glue_version='4.0',
-                worker_type='G.2X',
-                number_of_workers=55,
+                worker_type='G.1X',
+                number_of_workers=10,
                 timeout=60, 
                 default_arguments={
                     '--bucket': glueS3Bucket.bucket_name
