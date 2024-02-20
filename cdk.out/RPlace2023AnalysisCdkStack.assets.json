@@ -53,7 +53,7 @@
         }
       }
     },
-    "cbc6cf78f79ccc28e48c85d061542f0855eba15a51cc20e2127fad48b8813da8": {
+    "5f6b247a70d63b59562992afcbc11b07266e5d49ddb4b6f8cdc3d085fd3de98b": {
       "source": {
         "path": "RPlace2023AnalysisCdkStack.template.json",
         "packaging": "file"
@@ -61,7 +61,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "cbc6cf78f79ccc28e48c85d061542f0855eba15a51cc20e2127fad48b8813da8.json",
+          "objectKey": "5f6b247a70d63b59562992afcbc11b07266e5d49ddb4b6f8cdc3d085fd3de98b.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }

@@ -1,1 +1,3 @@
 /.venv
+/cdk.out
+/stacks/__pycache__

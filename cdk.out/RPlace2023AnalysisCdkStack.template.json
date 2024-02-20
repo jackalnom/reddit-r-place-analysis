@@ -555,7 +555,7 @@
     },
     "GlueVersion": "4.0",
     "Name": "process_csvs_to_parquet_job",
-    "NumberOfWorkers": 55,
+    "NumberOfWorkers": 10,
     "Role": {
      "Fn::GetAtt": [
       "glueroleid23238EBB2881",
@@ -563,7 +563,7 @@
      ]
     },
     "Timeout": 60,
-    "WorkerType": "G.2X"
+    "WorkerType": "G.1X"
    },
    "Metadata": {
     "aws:cdk:path": "RPlace2023AnalysisCdkStack/process_csvs_to_parquet_job"

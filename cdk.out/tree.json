@@ -749,7 +749,7 @@
                 },
                 "glueVersion": "4.0",
                 "name": "process_csvs_to_parquet_job",
-                "numberOfWorkers": 55,
+                "numberOfWorkers": 10,
                 "role": {
                   "Fn::GetAtt": [
                     "glueroleid23238EBB2881",
@@ -757,7 +757,7 @@
                   ]
                 },
                 "timeout": 60,
-                "workerType": "G.2X"
+                "workerType": "G.1X"
               }
             },
             "constructInfo": {
